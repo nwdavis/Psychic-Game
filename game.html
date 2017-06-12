@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Psychic Game</title>
+
+</head>
+<body>
+
+<h1>The Psychic Game</h1>
+<h2>Guess what letter I'm thinking of!</h2>
+<div id="html">
+	<p>Wins:</p>
+	<p>Losses:</p>
+	<p>Guesses Left:</p>
+	<p>Letters Guessed:</p>	
+</div>
+
+<script>
+
+// the computer needs to pick a random letter from the alphabet
+// the user needs to type a random letter from the alphabet, that answer needs to be lowercased
+// the user choice needs to be compared to the list of guessed letters, and if it has been picked, it should not accept it
+// need to compare the two letters to see if they are the same
+// if they are the same, wins needs to go up by 1, letters guessed needs to reset and the computer needs to pick another letter
+// if they aren't, guesses left needs to decrease by 1, and the letter needs to be added to the guessed letter array
+// if guesses left reaches 0, losses needs to go up by 1 and the computer needs to pick another letter
+// when these actions happen, the html should be refreshed.
+
+function randNum() {
+		return Math.floor(Math.random() *26);	
+	}
+
+
+
+var wins = 0;
+var losses = 0;
+var guessesLeft = 10;
+var lettersGuessed = [""];
+var alphabet = ["a", 
+				"b", 
+				"c", 
+				"d", 
+				"e", 
+				"f",
+				"g",
+				"h",
+				"i",
+				"j",
+				"k",
+				"l",
+				"m",
+				"n",
+				"o",
+				"p",
+				"q",
+				"r",
+				"s",
+				"t",
+				"u",
+				"v",
+				"w",
+				"x",
+				"y",
+				"z"];
+var compChoice = alphabet[randNum()];
+var userChoice;
+
+
+
+document.onkeyup = function(event) {
+	var userChoice = event.key.toLowerCase();
+	if ((userChoice) === (compChoice)) {
+		wins++;
+		guessesLeft = 10;
+		lettersGuessed = [];
+	} else {
+		guessesLeft--;
+		lettersGuessed.push(userChoice);
+	}
+	if ((userChoice) === (lettersGuessed[""]) {
+		alert("Wrong!");
+	}
+	if ((guessesLeft) < 1) {
+		losses++;
+		guessesLeft = [""];
+	}
+
+	var html = "<p> Wins: " + wins + "</p>" + 
+	"<p> Losses: " + losses + "</p>" + 
+	"<p> Guesses Left: " + guessesLeft + "</p>" +
+	"<p> Letters Guessed: " + lettersGuessed + "</p>"
+
+	document.querySelector('#html').innerHTML = html;
+
+}
+
+
+
+
+</script>
+	
+</body>
+</html>
