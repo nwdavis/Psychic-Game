@@ -36,7 +36,7 @@ function randNum() {
 var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
-var lettersGuessed = [""];
+var lettersGuessed = [];
 var alphabet = ["a", 
 				"b", 
 				"c", 
@@ -69,29 +69,36 @@ var userChoice;
 
 
 document.onkeyup = function(event) {
+
 	var userChoice = event.key.toLowerCase();
-	if ((userChoice) === (compChoice)) {
-		wins++;
-		guessesLeft = 10;
-		lettersGuessed = [];
-	} else {
-		guessesLeft--;
-		lettersGuessed.push(userChoice);
-	}
-	if ((userChoice) === (lettersGuessed[""]) {
-		alert("Wrong!");
-	}
-	if ((guessesLeft) < 1) {
-		losses++;
-		guessesLeft = [""];
-	}
+	// if ([lettersGuessed].includes(userChoice) {
+	// 		alert("You already guessed that!");
+	// 	}
+	alert(compChoice)
 
-	var html = "<p> Wins: " + wins + "</p>" + 
-	"<p> Losses: " + losses + "</p>" + 
-	"<p> Guesses Left: " + guessesLeft + "</p>" +
-	"<p> Letters Guessed: " + lettersGuessed + "</p>"
+		if ((userChoice) === (compChoice)) {
+			wins++;
+			guessesLeft = 10;
+			lettersGuessed = [];
+			compChoice = alphabet[randNum()];
+		} else {
+			guessesLeft--;
+			lettersGuessed.push(userChoice);
+		}
+		
+		if ((guessesLeft) < 1) {
+			losses++;
+			guessesLeft = 10;
+			lettersGuessed = [];
+			compChoice = alphabet[randNum()];
+		}
 
-	document.querySelector('#html').innerHTML = html;
+		var html = "<p> Wins: " + wins + "</p>" + 
+		"<p> Losses: " + losses + "</p>" + 
+		"<p> Guesses Left: " + guessesLeft + "</p>" +
+		"<p> Letters Guessed: " + lettersGuessed + "</p>"
+
+		document.querySelector('#html').innerHTML = html;
 
 }
 
