@@ -67,23 +67,20 @@ var compChoice = alphabet[randNum()];
 var userChoice;
 
 
-
 document.onkeyup = function(event) {
 
 	var userChoice = event.key.toLowerCase();
-	// if ([lettersGuessed].includes(userChoice) {
-	// 		alert("You already guessed that!");
-	// 	}
-	alert(compChoice)
 
 		if ((userChoice) === (compChoice)) {
 			wins++;
 			guessesLeft = 10;
 			lettersGuessed = [];
 			compChoice = alphabet[randNum()];
-		} else {
+		} else if (lettersGuessed.indexOf(userChoice) === -1) {
 			guessesLeft--;
 			lettersGuessed.push(userChoice);
+		} else {
+			alert("You already guessed that!");
 		}
 		
 		if ((guessesLeft) < 1) {
