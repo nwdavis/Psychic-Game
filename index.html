@@ -71,6 +71,10 @@ document.onkeyup = function(event) {
 
 	var userChoice = event.key.toLowerCase();
 
+		if (alphabet.indexOf(userChoice) === -1) {
+			alert("Fool! That's not a real letter!");
+		} else {
+
 		if ((userChoice) === (compChoice)) {
 			wins++;
 			guessesLeft = 10;
@@ -97,6 +101,7 @@ document.onkeyup = function(event) {
 
 		document.querySelector('#html').innerHTML = html;
 
+}
 }
 
 
