@@ -1,1 +1,1 @@
-Simple Bootstrap/jQuery game with on-click functionality.
+Simple guessing game, trying to match a random letter.
